@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="230dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/bgcolor"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:padding="6dp"
+            >
+
+            <TextView
+                android:id="@+id/data_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="6dp"
+                android:text=""
+                android:textAlignment="viewEnd"
+                android:textColor="@color/textcolordata"
+                android:textSize="28sp"
+                />
+
+            <TextView
+                android:id="@+id/result_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="10dp"
+                android:text="="
+                android:visibility="gone"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/textcolorresult"
+                android:textSize="34sp"
+
+                />
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/linecolor"
+        app:layout_constraintBottom_toTopOf="@+id/linear1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_C"
+                style="@style/operatorbutton"
+                android:text="C"
+                android:onClick="onClearClick"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/operatorbutton"
+                android:id="@+id/btn_modulo"
+                android:text="%"
+                app:iconTint="@color/btnBackground2"
+                android:onClick="onOperatorClick"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_backspace"
+                style="@style/digitbutton"
+                android:gravity="center"
+                android:onClick="onbackspaceClick"
+                app:icon="@drawable/backspace"
+                app:iconTint="@color/btnBackground2"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/operatorbutton"
+                android:id="@+id/btn_divison"
+                android:text="/"
+                app:icon="@drawable/divide_01_svgrepo_com"
+                app:iconTint="@color/btnBackground2"
+                android:onClick="onOperatorClick"
+             />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_7"
+                android:text="7"
+                android:onClick="ondigitclick"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_8"
+                android:text="8"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_9"
+                android:text="9"
+                android:onClick="ondigitclick"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_multiplication"
+                style="@style/operatorbutton"
+                android:onClick="onOperatorClick"
+
+                android:text="*"
+                app:icon="@drawable/ic_baseline_close_24"
+                app:iconTint="@color/btnBackground2" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_4"
+                android:text="4"
+                android:onClick="ondigitclick"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_5"
+                android:text="5"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_6"
+                android:text="6"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/operatorbutton"
+                android:id="@+id/btn_subtraction"
+                app:icon="@drawable/ic_baseline_remove_24"
+                android:text="-"
+                android:onClick="onOperatorClick"
+                app:iconTint="@color/btnBackground2"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_1"
+                android:text="1"
+                android:onClick="ondigitclick"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_2"
+                android:text="2"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_3"
+                android:text="3"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/operatorbutton"
+                android:id="@+id/btn_addition"
+                android:text="+"
+                app:iconTint="@color/btnBackground2"
+                app:icon="@drawable/ic_baseline_add_24"
+                android:onClick="onOperatorClick"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_AC"
+                style="@style/operatorbutton"
+                android:onClick="onAllclearClick"
+                android:text="AC"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_0"
+                android:text="0"
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/digitbutton"
+                android:id="@+id/btn_dot"
+                android:text="."
+                android:onClick="ondigitclick"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/operatorbutton"
+                android:id="@+id/btn_equal"
+                android:text="="
+                android:textColor="@color/white"
+                android:backgroundTint="@color/btnBackground2"
+                android:onClick="onEqualClick"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
