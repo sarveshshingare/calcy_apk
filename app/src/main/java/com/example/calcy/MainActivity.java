@@ -15,24 +15,28 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import org.apache.commons.lang3.StringUtils;
 
 public class MainActivity extends AppCompatActivity {
-ActivityMainBinding binding;
-    boolean lastnumeric= false;
-    boolean statError= false;
-    boolean lastDot= false;
+    ActivityMainBinding binding;
+    //variables
+    boolean lastnumeric = false;
+    boolean statError = false;
+    boolean lastDot = false;
     Expression expression;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding =ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
+    //    onClear button
     public void onClearClick(View view) {
 
         binding.dataTv.setText("");
-        lastnumeric=false;
+        lastnumeric = false;
     }
 
+    //    onBackspace button
     public void onbackspaceClick(View view) {
 
         String temp = StringUtils.chop(binding.dataTv.getText().toString());
@@ -40,16 +44,16 @@ ActivityMainBinding binding;
 
         try {
             String temp2 = binding.dataTv.getText().toString();
-            String lastchar= String.valueOf(temp2.charAt(temp2.length()-1));
-            if (StringUtils.isNumeric(lastchar)){
+            String lastchar = String.valueOf(temp2.charAt(temp2.length() - 1));
+            if (StringUtils.isNumeric(lastchar)) {
                 onEqual();
-            }else{
-                String noOperatorString=StringUtils.chop(temp);
+            } else {
+                String noOperatorString = StringUtils.chop(temp);
                 onEqual(noOperatorString);
 
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             binding.resultTv.setText("");
             binding.resultTv.setVisibility(View.GONE);
             System.out.println(e);
@@ -58,22 +62,24 @@ ActivityMainBinding binding;
 
     }
 
+    //    onOperator button
     public void onOperatorClick(View view) {
         Button button = (Button) view;
-        if (!statError && lastnumeric ){
+        if (!statError && lastnumeric) {
 
             binding.dataTv.append(button.getText().toString());
-            lastDot=false;
-            lastnumeric=false;
+            lastDot = false;
+            lastnumeric = false;
             onEqual();
         }
 
     }
 
+    //    onEqual Button
     public void onEqualClick(View view) {
 
         onEqual();
-        binding.dataTv.setText(binding.resultTv.getText().toString().replaceAll("=",""));
+        binding.dataTv.setText(binding.resultTv.getText().toString().replaceAll("=", ""));
 
     }
 
@@ -82,12 +88,13 @@ ActivityMainBinding binding;
 
         binding.dataTv.setText("");
         binding.resultTv.setText("");
-        statError=false;
-        lastDot=false;
-        lastnumeric=false;
+        statError = false;
+        lastDot = false;
+        lastnumeric = false;
         binding.resultTv.setVisibility(View.GONE);
     }
 
+    //    onDigit button
     public void ondigitclick(View view) {
 
         try {
@@ -106,44 +113,46 @@ ActivityMainBinding binding;
             lastnumeric = true;
             onEqual();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    private void onEqual(){
-    if (lastnumeric && !statError) {
-        String txt = binding.dataTv.getText().toString();
-        if (txt.contains("%")) {
-            String val = txt.replaceAll("%", "/100*");
-            onEqual(val);
-        }
-        else {
-            onEqual(txt);
-        }
-    }
-
-
-    }
-    private void onEqual(String str){
-        if (lastnumeric && !statError){
-            expression = new ExpressionBuilder(str).build();
-            try {
-                String result = String.valueOf(expression.evaluate());
-                if(result.endsWith(".0")){
-                    result=result.replace(".0","");
-                }
-                binding.resultTv.setVisibility(View.VISIBLE);
-                binding.resultTv.setText("="+result);
-            }catch (ArithmeticException arithmeticException){
-                System.out.println(arithmeticException);
-                binding.resultTv.setText("Error");
-                statError=true;
-                lastnumeric=false;
+    // method called when equal to button is clicked
+    private void onEqual() {
+        if (lastnumeric && !statError) {
+            String txt = binding.dataTv.getText().toString();
+            if (txt.contains("%")) {
+                String val = txt.replaceAll("%", "/100*");
+                onEqual(val);
+            } else {
+                onEqual(txt);
             }
         }
 
 
     }
+
+    //method to calculate the expression
+    private void onEqual(String str) {
+        if (lastnumeric && !statError) {
+            expression = new ExpressionBuilder(str).build();
+            try {
+                String result = String.valueOf(expression.evaluate());
+                if (result.endsWith(".0")) {
+                    result = result.replace(".0", "");
+                }
+                binding.resultTv.setVisibility(View.VISIBLE);
+                binding.resultTv.setText("=" + result);
+            } catch (ArithmeticException arithmeticException) {
+                System.out.println(arithmeticException);
+                binding.resultTv.setText("Error");
+                statError = true;
+                lastnumeric = false;
+            }
+        }
+
+
     }
+}
 //done

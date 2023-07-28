@@ -8,10 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FFFFFFFF</color>
-<color name="textcolordata">#FF000000</color>
+    <color name="textcolordata">#FF000000</color>
     <color name="textcolorresult">#838383</color>
     <color name="bgcolor">#FFFFFF</color>
-
 
 
     <color name="gray">#DAD8D8</color>
